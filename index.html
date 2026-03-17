@@ -8,20 +8,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="stylesheet" href="style.css">
+
 <meta name="google-site-verification" content="wnu53yjciNV-BA2TnZ3c06YykgPCBSgS1znA3L1zgzI" />
-<!-- Google tag (gtag.js) -->
+
+<!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z0B3NETKS6"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-Z0B3NETKS6');
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-Z0B3NETKS6');
 </script>
+
 </head>
 
 <body>
 
+<!-- HEADER -->
 <header>
   <div class="logo">🎬 Movies4Hub</div>
 
@@ -32,6 +35,7 @@
   </nav>
 </header>
 
+<!-- SEARCH -->
 <div class="search-box">
 
 <input 
@@ -43,31 +47,32 @@ onkeypress="if(event.key==='Enter'){searchMovie()}">
 
 </div>
 
+<!-- RESULT -->
 <div id="result"></div>
 
-
-
+<!-- TRENDING -->
 <h2>🔥 Trending Movies</h2>
 
 <div class="slider">
 
-<button class="arrow left" onclick="scrollLeft()">❮</button>
+<button class="arrow left" onclick="slideLeft()">❮</button>
 
 <div id="trending" class="trending-row"></div>
 
-<button class="arrow right" onclick="scrollRight()">❯</button>
+<button class="arrow right" onclick="slideRight()">❯</button>
 
 </div>
 
-
-<script src="script.js"></script>
-  <footer>
+<!-- FOOTER -->
+<footer>
 <a href="privacy.html">Privacy Policy</a> |
 <a href="about.html">About</a> |
 <a href="contact.html">Contact</a> |
 <a href="disclaimer.html">Disclaimer</a>
 </footer>
 
-</body>
+<!-- JS -->
+<script src="script.js"></script>
 
+</body>
 </html>
