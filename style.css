@@ -173,3 +173,25 @@ footer a{
 footer a:hover{
   text-decoration:underline;
 }
+.articles{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  max-width:600px;
+  margin:20px auto;
+  text-align:left;
+}
+
+.articles a{
+  background:#1e293b;
+  padding:12px;
+  border-radius:10px;
+  color:#38bdf8;
+  text-decoration:none;
+  transition:0.3s;
+}
+
+.articles a:hover{
+  background:#334155;
+  color:white;
+}
