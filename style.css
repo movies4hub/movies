@@ -1,83 +1,12 @@
-.slider{
-position:relative;
-display:flex;
-align-items:center;
-}
-
-.trending-row{
-
-display:flex;
-
-overflow-x:auto;
-
-gap:20px;
-
-padding:20px;
-
-scroll-behavior:smooth;
-
-}
-
-.trending-row::-webkit-scrollbar{
-display:none;
-}
-
-.movie{
-
-min-width:150px;
-
-background:#FFFFFF;
-
-padding:10px;
-
-border-radius:10px;
-
-text-align:center;
-
-flex:0 0 auto;
-
-}
-
-.movie img{
-width:100%;
-border-radius:8px;
-}
-
-.arrow{
-
-position:absolute;
-
-background:rgba(0,0,0,0.6);
-
-color:white;
-
-border:none;
-
-font-size:30px;
-
-cursor:pointer;
-
-padding:10px;
-
-z-index:10;
-
-}
-
-.left{
-left:0;
-}
-
-.right{
-right:0;
-}
+/* BODY */
 body{
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(to right,#020617,#0f172a);
+  font-family:'Segoe UI',sans-serif;
+  background:linear-gradient(to right,#020617,#0f172a);
   color:white;
   margin:0;
 }
 
-/* Header */
+/* HEADER */
 header{
   display:flex;
   justify-content:space-between;
@@ -103,7 +32,7 @@ nav a:hover{
   color:white;
 }
 
-/* Search */
+/* SEARCH */
 .search-box{
   text-align:center;
   margin:40px 0;
@@ -131,7 +60,7 @@ button:hover{
   background:#dc2626;
 }
 
-/* Result Card */
+/* RESULT CARD */
 .movie-card{
   background:rgba(30,41,59,0.8);
   backdrop-filter:blur(10px);
@@ -147,9 +76,11 @@ button:hover{
   border-radius:10px;
 }
 
-/* Trending slider */
+/* TRENDING SLIDER */
 .slider{
   position:relative;
+  display:flex;
+  align-items:center;
 }
 
 .trending-row{
@@ -169,17 +100,15 @@ button:hover{
   border-radius:10px;
 }
 
-/* Movie box */
+/* MOVIE BOX */
 .movie{
   min-width:150px;
   background:#1e293b;
   padding:10px;
   border-radius:12px;
+  text-align:center;
   transition:0.3s;
-}
-
-.movie:hover{
-  transform:scale(1.05);
+  flex:0 0 auto;
 }
 
 .movie img{
@@ -187,12 +116,31 @@ button:hover{
   border-radius:10px;
 }
 
+/* FIX TEXT VISIBILITY */
 .movie p{
   font-size:14px;
-  margin-top:5px;
+  margin-top:8px;
+  color:#e2e8f0;
+  font-weight:600;
+  transition:0.3s;
 }
 
-/* Arrows */
+/* HOVER EFFECT */
+.movie:hover{
+  transform:scale(1.05);
+}
+
+.movie:hover p{
+  color:#ef4444;
+}
+
+/* REMOVE LINK STYLE */
+.movie a{
+  text-decoration:none;
+  color:inherit;
+}
+
+/* ARROWS */
 .arrow{
   position:absolute;
   top:40%;
@@ -202,12 +150,13 @@ button:hover{
   padding:10px;
   cursor:pointer;
   border-radius:50%;
+  z-index:10;
 }
 
 .left{ left:10px; }
 .right{ right:10px; }
 
-/* Footer */
+/* FOOTER */
 footer{
   text-align:center;
   padding:20px;
