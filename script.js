@@ -1,7 +1,6 @@
 const OMDB_KEY = "5f1ade6e";
 
 /* trending movie list */
-
 const trendingMovies = [
 "Avatar",
 "Avengers",
@@ -9,7 +8,7 @@ const trendingMovies = [
 "Interstellar",
 "Inception",
 "Joker",
-"pk",
+"PK",
 "Titanic",
 "Batman",
 "Gladiator",
@@ -17,14 +16,17 @@ const trendingMovies = [
 ];
 
 /* load trending movies */
-
 async function loadTrending(){
 
 let container = document.getElementById("trending");
 
 if(!container) return;
 
+container.innerHTML = ""; // reset
+
 for(let movie of trendingMovies){
+
+try{
 
 let res = await fetch(
 `https://www.omdbapi.com/?t=${movie}&apikey=${OMDB_KEY}`
@@ -32,16 +34,15 @@ let res = await fetch(
 
 let data = await res.json();
 
+if(data.Response === "True"){
+
 container.innerHTML += `
 
-<a href="movie.html?title=${data.Title}">
+<a href="#" onclick="searchByTitle('${data.Title}')">
 
 <div class="movie">
-
-<img src="${data.Poster}">
-
+<img src="${data.Poster !== "N/A" ? data.Poster : ""}">
 <p>${data.Title}</p>
-
 </div>
 
 </a>
@@ -50,31 +51,31 @@ container.innerHTML += `
 
 }
 
+}catch(e){
+console.log("Error loading movie:", movie);
 }
-
-/* slider buttons */
-
-function scrollLeft(){
-
-document.getElementById("trending")
-.scrollBy({left:-300,behavior:"smooth"});
 
 }
 
-function scrollRight(){
+}
 
-document.getElementById("trending")
-.scrollBy({left:300,behavior:"smooth"});
+/* slider buttons FIXED */
+function slideLeft(){
+let box = document.getElementById("trending");
+box.scrollBy({left:-300, behavior:"smooth"});
+}
 
+function slideRight(){
+let box = document.getElementById("trending");
+box.scrollBy({left:300, behavior:"smooth"});
 }
 
 /* movie search */
-
 async function searchMovie(){
 
 let movie = document.getElementById("movieName").value;
 
-if(movie==="") return;
+if(movie.trim() === "") return;
 
 let res = await fetch(
 `https://www.omdbapi.com/?t=${movie}&apikey=${OMDB_KEY}`
@@ -82,7 +83,7 @@ let res = await fetch(
 
 let data = await res.json();
 
-if(data.Response==="False"){
+if(data.Response === "False"){
 
 document.getElementById("result").innerHTML =
 "<h3>Movie not found</h3>";
@@ -91,13 +92,26 @@ return;
 
 }
 
+showMovie(data);
+
+}
+
+/* click from trending */
+function searchByTitle(title){
+document.getElementById("movieName").value = title;
+searchMovie();
+}
+
+/* show movie */
+function showMovie(data){
+
 document.getElementById("result").innerHTML = `
 
 <div class="movie-card">
 
 <h2>${data.Title}</h2>
 
-<img src="${data.Poster}">
+<img src="${data.Poster !== "N/A" ? data.Poster : ""}">
 
 <p><b>Year:</b> ${data.Year}</p>
 
@@ -114,5 +128,4 @@ document.getElementById("result").innerHTML = `
 }
 
 /* page load */
-
 window.onload = loadTrending;
